@@ -1,4 +1,1 @@
-djangorestframework
-decouple
 rave_python
-python-dotenv

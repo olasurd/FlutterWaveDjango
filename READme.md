@@ -2,6 +2,9 @@
 
 This library simplifies integrating Flutterwave, a popular African payment gateway, with your Django project. It provides functionalities for:
 
+## Usuage
+    - if the project is in development mode use your test keys else use your live keys
+        *payment = FlutterWaveDjango(public='your-public-key',secret='your-secret-key',inProduction=False)*
 * **Card Payments:**
     * Initiate card charges with validation.
     * Handle 3D Secure authentication (3DS) for added security.
