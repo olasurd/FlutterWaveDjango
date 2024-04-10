@@ -1,4 +1,4 @@
-# FlutterwaveDjango - A Django Integration Library for Flutterwave Payments**
+# FlutterwaveDjango - A Django Integration Library for Flutterwave Payments
 
 This library simplifies integrating Flutterwave, a popular African payment gateway, with your Django project. It provides functionalities for:
 
