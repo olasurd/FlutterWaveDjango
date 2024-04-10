@@ -1,36 +1,35 @@
 from rave_python import Rave, RaveExceptions, Misc
-from decouple import config
-from rest_framework import status
-from dotenv import load_dotenv
-
-
-load_dotenv()
 
 class FlutterWaveDjango:
-    def __init__(self, isProduction:bool, public:str, secret: str) -> None:
+    def __init__(self, isProduction:bool, public:str, secret: str):
         self.public:str = public
         self.secret:str = secret
-        if isProduction == False: 
-            self.rave:str = Rave(publicKey=self.public, secretKey=self.secret, usingEnv=False, production=False,)
-        else:
-            self.rave: Rave = Rave(publicKey=self.public, secretKey=self.secret, usingEnv=True, production=True)
+        try:
+            if isProduction == False: 
+                self.rave:str = Rave(publicKey=self.public, secretKey=self.secret, usingEnv=False, production=False,)
+            else:
+                self.rave: Rave = Rave(publicKey=self.public, secretKey=self.secret, usingEnv=True, production=True)
+            self.card = self.rave.Card
+            self.payout = self.rave.Transfer
+        except Exception as e:
+            error = {"error": str(e), "statusCode": 400}
+            print(error)
             
-        self.card = self.rave.Card
-        self.payout = self.rave.Transfer
+        
 
     def cardPaymentInitiate(self, payload):
         try:
             self.charge = self.card.charge(payload)
-            return {"success": self.charge, "statusCode": status.HTTP_200_OK}
+            return {"success": self.charge, "statusCode": 200}
 
         except RaveExceptions.CardChargeError as e:
-            return {"card_error": str(e), "statusCode": status.HTTP_400_BAD_REQUEST}
+            return {"card_error": str(e), "statusCode": 400}
 
         except RaveExceptions.TransactionValidationError as e:
-            return {"validation_error": str(e), "statusCode": status.HTTP_400_BAD_REQUEST}
+            return {"validation_error": str(e), "statusCode": 400}
 
         except RaveExceptions.TransactionVerificationError as e:
-            return {"verify_error": str(e), "statusCode": status.HTTP_400_BAD_REQUEST}
+            return {"verify_error": str(e), "statusCode": 400}
     
     def validate3DCardPayment(self):
         pass
@@ -44,7 +43,7 @@ class FlutterWaveDjango:
                     Misc.updatePayload(charge["suggestedAuth"], payload, pin=pin)
                     charge = self.card.charge(payload)
                     
-                    return {"message": charge, "status":"valid","statusCode": status.HTTP_200_OK}
+                    return {"message": charge, "status":"valid","statusCode": 200}
 
                 # elif arg == "address":
                 #     Misc.updatePayload(res["suggestedAuth"], payload, address=address)
