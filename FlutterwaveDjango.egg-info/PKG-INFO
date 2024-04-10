@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: FlutterwaveDjango
+Version: 1.1.0
+Summary: FlutterwaveDjango - A Django Integration Library for Flutterwave Payment
+Home-page: https://github.com/surdma/FlutterwaveDjango
+Author: Oladejo Sodiq Opeyemi
+Author-email: devsurdma@gmail.com
+License: MIT
+License-File: LICENSE.txt
+Requires-Dist: djangorestframework
+Requires-Dist: decouple
+Requires-Dist: rave_python
+Requires-Dist: python-dotenv

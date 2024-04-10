@@ -1,0 +1,10 @@
+LICENSE.txt
+pyproject.toml
+setup.py
+FlutterWaveDjango/FlutterWaveDjango.py
+FlutterWaveDjango/__init__.py
+FlutterwaveDjango.egg-info/PKG-INFO
+FlutterwaveDjango.egg-info/SOURCES.txt
+FlutterwaveDjango.egg-info/dependency_links.txt
+FlutterwaveDjango.egg-info/requires.txt
+FlutterwaveDjango.egg-info/top_level.txt
