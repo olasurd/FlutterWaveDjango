@@ -1,11 +1,11 @@
 from rave_python import Rave, RaveExceptions, Misc
 
 class FlutterWaveDjango:
-    def __init__(self, isProduction:bool, public:str, secret: str):
+    def __init__(self, inProduction:bool, public:str, secret: str):
         self.public:str = public
         self.secret:str = secret
         try:
-            if isProduction == False: 
+            if inProduction == False: 
                 self.rave:str = Rave(publicKey=self.public, secretKey=self.secret, usingEnv=False, production=False,)
             else:
                 self.rave: Rave = Rave(publicKey=self.public, secretKey=self.secret, usingEnv=True, production=True)
